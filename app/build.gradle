@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // default build config
+        buildConfigField 'String' , 'API_BASE_URL', '"https://golang-heroku.herokuapp.com/api/"'
     }
 
     buildTypes {
@@ -30,6 +33,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -63,7 +69,7 @@ dependencies {
     // dagger - Hilt
     //https://stackoverflow.com/questions/69511275/plugin-id-dagger-hilt-android-plugin-was-not-found-in-any-of-the-following for solve not found   id 'dagger.hilt.android.plugin'
     implementation "com.google.dagger:hilt-android:$dagger_hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
+    annotationProcessor  "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$dagger_hilt_viewModel_version"
     kapt "androidx.hilt:hilt-compiler:$dagger_hilt_viewModel_version"
 
